@@ -11,4 +11,12 @@ License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
+namespace roku_direct_publisher;
+
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
+require_once( plugin_dir_path( __FILE__ ) . 'post_types/video.php' );
+
+require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/genre.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/tag.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/rating.php' );
