@@ -17,6 +17,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 require_once( plugin_dir_path( __FILE__ ) . 'post_types/video.php' );
 
+require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/format.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/genre.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/tag.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/rating.php' );
