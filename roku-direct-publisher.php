@@ -15,6 +15,11 @@ namespace roku_direct_publisher;
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+if( !class_exists( 'acf' ) ){
+  include_once( plugin_dir_path( __FILE__ ) . 'vendor/advanced-custom-fields/acf.php' );
+  require_once( plugin_dir_path( __FILE__ ) . 'lib/acf.php' );
+}
+
 require_once( plugin_dir_path( __FILE__ ) . 'post_types/video.php' );
 
 require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/format.php' );
