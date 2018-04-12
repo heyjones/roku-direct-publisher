@@ -15,14 +15,18 @@ namespace roku_direct_publisher;
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-if( !class_exists( 'acf' ) ){
-  include_once( plugin_dir_path( __FILE__ ) . 'vendor/advanced-custom-fields/acf.php' );
-  require_once( plugin_dir_path( __FILE__ ) . 'lib/acf.php' );
+if( !defined( 'ROKU_DIRECT_PUBLISHER_DIR' ) ){
+  define( 'ROKU_DIRECT_PUBLISHER_DIR', plugin_dir_path( __FILE__ ) );
+}
+if( !defined( 'ROKU_DIRECT_PUBLISHER_URL' ) ){
+  define( 'ROKU_DIRECT_PUBLISHER_URL', plugin_dir_url( __FILE__ ) );
 }
 
-require_once( plugin_dir_path( __FILE__ ) . 'post_types/video.php' );
+require_once( ROKU_DIRECT_PUBLISHER_DIR . 'lib/acf.php' );
 
-require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/format.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/genre.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/tag.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'taxonomies/rating.php' );
+require_once( ROKU_DIRECT_PUBLISHER_DIR . 'post_types/video.php' );
+
+require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/format.php' );
+require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/genre.php' );
+require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/tag.php' );
+require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/rating.php' );
