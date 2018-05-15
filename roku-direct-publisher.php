@@ -23,10 +23,13 @@ if( !defined( 'ROKU_DIRECT_PUBLISHER_URL' ) ){
 }
 
 require_once( ROKU_DIRECT_PUBLISHER_DIR . 'lib/acf.php' );
+require_once( ROKU_DIRECT_PUBLISHER_DIR . 'lib/feed.php' );
+require_once( ROKU_DIRECT_PUBLISHER_DIR . 'lib/settings.php' );
 
 require_once( ROKU_DIRECT_PUBLISHER_DIR . 'post_types/video.php' );
 
-require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/format.php' );
-require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/genre.php' );
+require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/category.php' );
 require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/tag.php' );
-require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/rating.php' );
+require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/genre.php' );
+//require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/format.php' );
+//require_once( ROKU_DIRECT_PUBLISHER_DIR . 'taxonomies/rating.php' );

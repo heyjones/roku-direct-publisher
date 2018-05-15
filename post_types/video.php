@@ -4,11 +4,9 @@ namespace roku_direct_publisher\video;
 
 add_action( 'init', __NAMESPACE__ . '\\init' );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\\after_setup_theme' );
-add_filter( 'user_can_richedit', __NAMESPACE__ . '\\user_can_richedit' );
-add_filter( 'quicktags_settings', __NAMESPACE__ . '\\quicktags_settings');
 add_action( 'admin_head', __NAMESPACE__ . '\\admin_head' );
 add_action( 'add_meta_boxes', __NAMESPACE__ . '\\add_meta_boxes' );
-add_action( 'edit_form_after_title', __NAMESPACE__ . '\\edit_form_after_title' );
+add_filter( 'admin_post_thumbnail_html', __NAMESPACE__ . '\\admin_post_thumbnail_html' );
 
 function init(){
 	$labels = array(
@@ -44,7 +42,7 @@ function init(){
 		'label'                 => __( 'Video', 'roku_direct_publisher' ),
 		'description'           => __( 'Roku Direct Publisher', 'roku_direct_publisher' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'excerpt', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'excerpt', 'thumbnail' ),
 		'hierarchical'          => false,
 		'public'                => false,
 		'show_ui'               => true,
@@ -69,44 +67,30 @@ function after_setup_theme(){
   add_image_size( 'roku_480', 800, 450, true );
 }
 
-function gettext( $translation, $original ){
-  if( $original == 'Excerpt' ){
-    return __( 'Short description', 'roku_direct_publisher' );
-  }else{
-    $pos = strpos( $original, 'Excerpts are optional hand-crafted summaries of your' );
-    if( $pos !== false ){
-      return __( 'A description that does not exceed 200 characters. The text will be clipped if longer.', 'roku_direct_publisher' );
-    }
-  }
-  return $translation;
-}
-
-function user_can_richedit( $user_can_richedit ){
-  global $post;
-  if( $post->post_type === 'roku_video' ) return false;
-  return $user_can_richedit;
-}
-
-function quicktags_settings( $quicktags_settings ){
-  $quicktags_settings['buttons'] = 'fullscreen';
-  return $quicktags_settings;
-}
-
 function admin_head(){
-  global $post;
-  if( $post->post_type === 'roku_video' ){
-    remove_action( 'media_buttons', 'media_buttons' );
-    remove_meta_box( 'postexcerpt' , $post->post_type , 'normal' );
-  }
+  remove_meta_box( 'postexcerpt', 'roku_video', 'normal' );
 }
 
 function add_meta_boxes( $post_type ){
-  if( $post_type === 'roku_video' ){
-    add_meta_box( 'roku_postexcerpt', __( 'Short Description', 'roku_direct_publisher' ), 'post_excerpt_meta_box', $post_type, 'after_title', 'high' );
-  }
+  add_meta_box( 'short_description', __( 'Short Description', 'roku_direct_publisher' ), 'roku_direct_publisher\video\render_short_description', 'roku_video', 'normal', 'high' );
+	add_meta_box( 'long_description', __( 'Long Description', 'roku_direct_publisher' ), 'roku_direct_publisher\video\render_long_description', 'roku_video', 'normal', 'high' );
 }
 
-function edit_form_after_title(){
-  global $post, $wp_meta_boxes;
-  do_meta_boxes( get_current_screen(), 'after_title', $post );
+function render_short_description( $post ){
+	?>
+	<textarea name="excerpt" rows="4" style="margin: 12px 0 0; width: 100%;"><?php echo $post->post_excerpt; ?></textarea>
+	<p class="howto">A video description that does not exceed 200 characters. The text will be clipped if longer.</p>
+	<?php
+}
+
+function render_long_description( $post ){
+	?>
+	<textarea name="content" rows="10" style="margin: 12px 0 0; width: 100%;"><?php echo $post->post_content; ?></textarea>
+	<p class="howto">A longer video description that does not exceed 500 characters. The text will be clipped if longer. Must be different from the short description.</p>
+	<?php
+}
+
+function admin_post_thumbnail_html( $content ){
+	$content .= '<p class="howto">Provide an image that is at least 1920px wide and 1080px tall.</p>';
+	return $content;
 }
