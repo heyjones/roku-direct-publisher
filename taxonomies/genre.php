@@ -29,7 +29,7 @@ function init() {
 	);
 	$args = array(
 		'labels'                     => $labels,
-		'hierarchical'               => false,
+		'hierarchical'               => true,
 		'public'                     => true,
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
@@ -38,4 +38,41 @@ function init() {
 		'rewrite'                    => false,
 	);
 	\register_taxonomy( 'roku_genre', array( 'roku_video' ), $args );
+	$genres = array(
+    'action' => 'Action',
+    'adventure' => 'Adventure',
+    'animals' => 'Animals',
+    'animated' => 'Animated',
+    'anime' => 'Anime',
+    'children' => 'Children',
+    'comedy' => 'Comedy',
+    'crime' => 'Crime',
+    'documentary' => 'Documentary',
+    'drama' => 'Drama',
+    'educational' => 'Educational',
+    'fantasy' => 'Fantasy',
+    'faith' => 'Faith',
+    'food' => 'Food',
+    'fashion' => 'Fashion',
+    'gaming' => 'Gaming',
+    'health' => 'Health',
+    'history' => 'History',
+    'horror' => 'Horror',
+    'miniseries' => 'Miniseries',
+    'mystery' => 'Mystery',
+    'nature' => 'Nature',
+    'news' => 'News',
+    'reality' => 'Reality',
+    'romance' => 'Romance',
+    'science' => 'Science',
+    'science-fiction' => 'Science Fiction',
+    'sitcom' => 'Sitcom',
+    'special' => 'Special',
+    'sports' => 'Sports',
+    'thriller' => 'Thriller',
+    'technology' => 'Technology'
+  );
+  foreach( $genres as $slug => $description ){
+    wp_insert_term( $description, 'roku_genre', array( 'slug' => $slug ) );
+  }
 }

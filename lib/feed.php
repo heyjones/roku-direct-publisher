@@ -39,6 +39,7 @@ function json(){
 }
 
 function videos( $type ){
+  $videos = array();
   $posts = get_posts( array(
     'meta_key' => 'roku_type',
     'meta_value' => $type,
@@ -50,7 +51,7 @@ function videos( $type ){
       'id' => $post->ID,
       'title' => $post->post_title,
       'content' => null,
-      'genres' => null,
+      'genres' => array_map( 'strtolower', wp_get_post_terms( $post->ID, 'roku_genre', array( 'fields' => 'names' ) ) ),
       'thumbnail' => get_the_post_thumbnail_url( $post->ID, 'roku_1080' ),
       'releaseDate' => date( 'c', strtotime( $post->post_modified_gmt ) ),
       'shortDescription' => $post->post_excerpt,
