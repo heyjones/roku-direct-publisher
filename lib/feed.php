@@ -51,7 +51,7 @@ function videos( $type ){
       'title' => $post->post_title,
       'content' => null,
       'genres' => null,
-      'thumbnail' => null,
+      'thumbnail' => get_the_post_thumbnail_url( $post->ID, 'roku_1080' ),
       'releaseDate' => date( 'c', strtotime( $post->post_modified_gmt ) ),
       'shortDescription' => $post->post_excerpt,
       'longDescription' => $post->post_content,
@@ -66,5 +66,5 @@ function videos( $type ){
 }
 
 function series(){
-  
+
 }
