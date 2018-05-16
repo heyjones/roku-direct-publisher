@@ -56,7 +56,7 @@ function videos( $type ){
       'releaseDate' => date( 'c', strtotime( $post->post_modified_gmt ) ),
       'shortDescription' => $post->post_excerpt,
       'longDescription' => $post->post_content,
-      'tags' => null,
+      'tags' => array_map( 'strtolower', wp_get_post_terms( $post->ID, 'roku_tag', array( 'fields' => 'names' ) ) ),
       'credits' => null,
       'rating' => null,
       'externalIds' => null
