@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: Roku Direct Publisher
+Plugin Name: Direct Publisher for Roku
 Plugin URI:  https://github.com/heyjones/roku-direct-publisher
 Description: WordPress Plugin for Roku Direct Publisher (https://developer.roku.com/publish)
 Version:     0.0
