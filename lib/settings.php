@@ -55,6 +55,18 @@ function render(){
               </select>
             </td>
           </tr>
+          <tr>
+            <th scope="row">
+              <label>
+                Feed URL
+              </label>
+            </th>
+            <td>
+              <a href="<?php echo get_feed_link( 'roku-direct-publisher' ); ?>" target="_blank">
+                <?php echo get_feed_link( 'roku-direct-publisher' ); ?>
+              </a>
+            </td>
+          </tr>
         </tbody>
       </table>
       <?php submit_button(); ?>
