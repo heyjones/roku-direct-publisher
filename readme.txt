@@ -1,16 +1,31 @@
 === Roku Direct Publisher ===
 Contributors: heyjones
-Tags: roku, direct publisher, video, streaming
 Donate link: https://cash.me/$heyjones
+Tags: roku, direct publisher, video, streaming
 Requires at least: 3.0
 Tested up to: 4.8
+Stable tag: trunk
+Requires PHP: 5.2.4
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Curate content for Roku through the Direct Publisher program.
+
+https://developer.roku.com/publish
 
 == Description ==
+
 Curate content for Roku through the Direct Publisher program.
 
+== Installation ==
+
+== Frequently Asked Questions ==
+
 == Screenshots ==
-1. Dashboard
-2. Manage Content
-3. Publish
+
+== Changelog ==
+
+= 1.0.0 =
+* Initial release
+
+== Upgrade Notice ==
