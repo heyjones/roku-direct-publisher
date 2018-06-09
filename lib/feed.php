@@ -48,7 +48,7 @@ function videos( $type ){
   ) );
   foreach( $posts as $post ){
     $video = array(
-      'id' => $post->ID,
+      'id' => (string)$post->ID,
       'title' => $post->post_title,
       'content' => content( $post ),
       'genres' => array_map( 'strtolower', wp_get_post_terms( $post->ID, 'roku_genre', array( 'fields' => 'names' ) ) ),
@@ -90,13 +90,13 @@ function content( $post ){
 function quality( $height ){
   switch( $height ){
     case 720:
-    $quality = 'HD – 720p';
+    $quality = 'HD';
     break;
     case 1080:
-    $quality = 'FHD – 1080p';
+    $quality = 'FHD';
     break;
     case 2160:
-    $quality = 'UHD – 4K';
+    $quality = 'UHD';
     break;
   }
   return $quality;
