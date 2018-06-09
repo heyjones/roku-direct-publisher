@@ -31,4 +31,7 @@ Curate content for Roku through the Direct Publisher program.
 = 1.0.1 =
 * Fix for ACF integration
 
+= 1.0.2 =
+* Fix for feed issues
+
 == Upgrade Notice ==
