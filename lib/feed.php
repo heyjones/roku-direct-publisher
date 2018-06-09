@@ -30,10 +30,8 @@ function json(){
     'series' => videos( 'episode' ),
     'shortFormVideos' => videos( 'shortFormVideo' ),
     'tvSpecials' => videos( 'tvSpecial' ),
-    'categories' => array(
-    ),
-    'playlists' => array(
-    )
+    'categories' => categories(),
+    'playlists' => playlists()
   );
   wp_send_json( $json );
 }
@@ -104,4 +102,57 @@ function quality( $height ){
 
 function series(){
 
+}
+
+function categories(){
+  $categories = array();
+  $terms = get_terms( array(
+    'taxonomy' => 'roku_category',
+    'hide_empty' => true
+  ) );
+  if( $terms ){
+    foreach( $terms as $term ){
+      $term->order = get_field( 'roku_order', $term ) ? get_field( 'roku_order', $term ) : 'chronological';
+      $categories[] = array(
+        'name' => $term->name,
+        'playlist' => $term->slug,
+        'order' => $term->order
+      );
+    }
+  }
+  return $categories;
+}
+
+function playlists(){
+  $playlists = array();
+  $terms = get_terms( array(
+    'taxonomy' => 'roku_category',
+    'hide_empty' => true
+  ) );
+  if( $terms ){
+    foreach( $terms as $term ){
+      $videos = get_posts( array(
+        'post_type' => 'roku_video',
+        'numberposts' => -1,
+        'tax_query' => array(
+          array(
+            'taxonomy' => 'roku_category',
+            'field' => 'id',
+            'terms' => $term->term_id
+          )
+        )
+      ) );
+      $item_ids = array();
+      if( $videos ){
+        foreach( $videos as $video ){
+          $item_ids[] = (string) $video->ID;
+        }
+      }
+      $playlists[] = array(
+        'name' => $term->slug,
+        'itemIds' => $item_ids
+      );
+    }
+  }
+  return $playlists;
 }

@@ -23,6 +23,10 @@ if( !class_exists( 'acf' ) ){
 
 }
 
+/*
+category
+*/
+
 register_field_group( array (
   'id' => 'acf_video',
   'title' => 'Video',
@@ -67,6 +71,50 @@ register_field_group( array (
   'options' => array (
     'position' => 'normal',
     'layout' => 'default',
+    'hide_on_screen' => array (
+    ),
+  ),
+  'menu_order' => 0,
+) );
+
+/*
+category
+*/
+
+register_field_group( array (
+  'id' => 'acf_roku-direct-publisher',
+  'title' => 'Roku Direct Publisher',
+  'fields' => array (
+    array (
+      'key' => 'field_5b1c0c101b2a1',
+      'label' => 'Order',
+      'name' => 'roku_order',
+      'type' => 'select',
+      'choices' => array (
+        'chronological' => 'Chronological',
+        'manual' => 'Manual',
+        'most_popular' => 'Most Popular',
+        'most_recent' => 'Most Recent',
+      ),
+      'default_value' => 'chronological',
+      'allow_null' => 0,
+      'multiple' => 0,
+    ),
+  ),
+  'location' => array (
+    array (
+      array (
+        'param' => 'ef_taxonomy',
+        'operator' => '==',
+        'value' => 'roku_category',
+        'order_no' => 0,
+        'group_no' => 0,
+      ),
+    ),
+  ),
+  'options' => array (
+    'position' => 'normal',
+    'layout' => 'no_box',
     'hide_on_screen' => array (
     ),
   ),
