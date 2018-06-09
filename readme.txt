@@ -4,7 +4,7 @@ Donate link: https://cash.me/$heyjones
 Tags: roku, direct publisher, video, streaming
 Requires at least: 3.0
 Tested up to: 4.8
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -33,5 +33,8 @@ Curate content for Roku through the Direct Publisher program.
 
 = 1.0.2 =
 * Fix for feed issues
+
+= 1.0.3 =
+* Added order by for categories
 
 == Upgrade Notice ==
