@@ -4,7 +4,7 @@
 Plugin Name: Direct Publisher for Roku
 Plugin URI:  https://github.com/heyjones/roku-direct-publisher
 Description: WordPress Plugin for Roku Direct Publisher (https://developer.roku.com/publish)
-Version:     1.0.3
+Version:     1.0.4
 Author:      Chris Jones
 Author URI:  http://heyjones.com
 License:     GPL2
