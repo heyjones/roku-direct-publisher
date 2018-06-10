@@ -115,7 +115,7 @@ function categories(){
       $term->order = get_field( 'roku_order', $term ) ? get_field( 'roku_order', $term ) : 'chronological';
       $categories[] = array(
         'name' => $term->name,
-        'playlist' => $term->slug,
+        'playlistName' => $term->slug,
         'order' => $term->order
       );
     }
